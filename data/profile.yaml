@@ -42,11 +42,31 @@ recognition:
   - title: Winner — Attack to Protect Hackathon
     detail: Web application penetration testing · Security Innovation · 2019
 certifications:
-  - Akamai Cloud Computing Foundations
-  - Securing Containers and Kubernetes Ecosystem
-  - ICSI Certified Network Security Specialist
-  - Microsoft Azure Fundamentals
-  - Google Cloud Platform Fundamentals
+  - title: Certified Information Systems Security Professional (CISSP)
+    issuer: ISC2
+    url: https://www.isc2.org/certifications/cissp
+    link_label: Certification details
+    featured: true
+  - title: Akamai Cloud Computing Foundations
+    issuer: Akamai Technologies
+    url: https://www.credly.com/earner/earned/badge/48b9a575-960a-4fe2-80ad-7c9d89b03617
+    link_label: View credential
+  - title: Securing Containers and Kubernetes Ecosystem
+    issuer: LinkedIn Learning
+    url: https://www.linkedin.com/learning/certificates/8a6c3293ac56766e77ad314328945faf912e1e5f2245a05097229aeee0ebc91c
+    link_label: View credential
+  - title: ICSI | CNSS Certified Network Security Specialist
+    issuer: ICSI
+    url: https://www.credential.net/279ca627-e897-43ff-93fd-5567be891dba
+    link_label: View credential
+  - title: Microsoft Azure Fundamentals (AZ-900)
+    issuer: Microsoft
+    url: https://www.credly.com/badges/6c33b329-1472-49a6-b6bd-13d4de0096b2/public_url
+    link_label: View credential
+  - title: Google Cloud Platform Fundamentals
+    issuer: Coursera
+    url: https://www.coursera.org/account/accomplishments/certificate/48PTD9VTYWCP
+    link_label: View credential
 education:
   institution: Birla Institute of Technology and Science, Pilani
   period: 2021–2023
