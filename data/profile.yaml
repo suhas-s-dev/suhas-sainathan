@@ -1,0 +1,53 @@
+name: Suhas Sainathan
+role: Senior Security Architect
+company: Akamai Technologies
+location: Bengaluru, India
+intro: >-
+  I help organizations understand and reduce security risk across modern applications,
+  cloud platforms, and internet infrastructure.
+about: >-
+  My work sits where deep technical investigation meets practical security architecture.
+  I care about turning complex findings into defenses that teams can operate, from
+  application and network security to cloud-native systems and digital forensics.
+links:
+  - label: LinkedIn
+    url: https://www.linkedin.com/in/suhas-sainathan/
+  - label: GitHub
+    url: https://github.com/suhas-s-dev
+focus:
+  - title: Security architecture
+    text: Designing clear, durable controls for applications, platforms, and the teams operating them.
+  - title: Cloud & container security
+    text: Securing modern infrastructure across cloud foundations, containers, Kubernetes, and zero-trust boundaries.
+  - title: Offensive insight
+    text: Using vulnerability research and adversarial thinking to make defensive systems more resilient.
+  - title: Digital forensics
+    text: Exploring evidence collection for cloud and IoT environments where traditional methods fall short.
+publications:
+  - title: Advanced Intuitive Model for Digital Forensics Collection Methods in the Context of Cloud Computing and IoT
+    publisher: iJRASET
+    year: "2022"
+    url: https://www.ijraset.com/best-journal/advanced-intuitive-model-for-digital-forensics-collection-methods-in-the-context-of-cloud-computing-and-iot
+    summary: A proposed evidence-collection model shaped by zero-trust principles and AI-assisted investigation for cloud and IoT environments.
+  - title: "Border Gateway Protocol (BGP): A Boon to Internet Application and ISPs"
+    publisher: IJARCCE
+    year: "2016"
+    url: https://www.ijarcce.com/upload/2016/november-16/IJARCCE%209.pdf
+    summary: An examination of BGP multihoming, scalability, route selection, and the protocol's role in resilient internet routing.
+recognition:
+  - title: Hall of Fame — Accenture
+    detail: Responsible vulnerability disclosure · 2019
+  - title: Hall of Fame — SonarSource
+    detail: Responsible vulnerability disclosure · 2019
+  - title: Winner — Attack to Protect Hackathon
+    detail: Web application penetration testing · Security Innovation · 2019
+certifications:
+  - Akamai Cloud Computing Foundations
+  - Securing Containers and Kubernetes Ecosystem
+  - ICSI Certified Network Security Specialist
+  - Microsoft Azure Fundamentals
+  - Google Cloud Platform Fundamentals
+education:
+  institution: Birla Institute of Technology and Science, Pilani
+  period: 2021–2023
+footer: Built as a small, fast home for work at the intersection of security, systems, and the internet.

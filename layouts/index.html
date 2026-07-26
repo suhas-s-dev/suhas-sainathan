@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c26">
+  <meta name="description" content="{{ site.Params.description }}">
+  <meta property="og:title" content="{{ hugo.Data.profile.name }} — {{ hugo.Data.profile.role }}">
+  <meta property="og:description" content="{{ site.Params.description }}">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="{{ .Permalink }}">
+  <meta property="og:image" content="{{ "images/suhas-sainathan.jpg" | absURL }}">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <title>{{ hugo.Data.profile.name }} — {{ hugo.Data.profile.role }}</title>
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "Person" "name" hugo.Data.profile.name "jobTitle" hugo.Data.profile.role "worksFor" (dict "@type" "Organization" "name" hugo.Data.profile.company) "address" (dict "@type" "PostalAddress" "addressLocality" hugo.Data.profile.location) "url" .Permalink "sameAs" (slice "https://www.linkedin.com/in/suhas-sainathan/" "https://github.com/suhas-s-dev") | jsonify | safeJS }}</script>
+</head>
+<body>
+  {{ $p := hugo.Data.profile }}
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header" aria-label="Site header">
+      <a class="wordmark" href="/" aria-label="{{ $p.name }} home"><span>SS</span> {{ $p.name }}</a>
+      <nav aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#writing">Research</a>
+        <a class="nav-cta" href="{{ (index $p.links 0).url }}">Connect <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{{ $p.location }}</p>
+          <h1 id="hero-title">Security thinking for systems that <em>cannot afford surprises.</em></h1>
+          <p class="lead">{{ $p.intro }}</p>
+          <div class="hero-actions">
+            {{ range $p.links }}<a href="{{ .url }}" class="text-link">{{ .label }} <span aria-hidden="true">↗</span></a>{{ end }}
+          </div>
+        </div>
+        <aside class="profile-card" aria-label="Profile">
+          <div class="portrait-wrap">
+            <img src="{{ "images/suhas-sainathan.jpg" | relURL }}" width="200" height="200" alt="Portrait of {{ $p.name }}">
+            <span class="corner-mark" aria-hidden="true"></span>
+          </div>
+          <div class="profile-meta">
+            <strong>{{ $p.name }}</strong>
+            <span>{{ $p.role }}</span>
+            <span>{{ $p.company }}</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="statement" aria-labelledby="about-title">
+        <p class="section-index">01 / About</p>
+        <div>
+          <h2 id="about-title">Complex systems. Clear decisions.</h2>
+          <p>{{ $p.about }}</p>
+        </div>
+      </section>
+
+      <section id="work" class="section-block" aria-labelledby="focus-title">
+        <div class="section-heading">
+          <p class="section-index">02 / Focus</p>
+          <h2 id="focus-title">Areas of practice</h2>
+        </div>
+        <div class="focus-grid">
+          {{ range $i, $item := $p.focus }}
+          <article class="focus-card">
+            <span>0{{ add $i 1 }}</span>
+            <h3>{{ $item.title }}</h3>
+            <p>{{ $item.text }}</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+
+      <section id="writing" class="section-block research" aria-labelledby="research-title">
+        <div class="section-heading">
+          <p class="section-index">03 / Research</p>
+          <h2 id="research-title">Published work</h2>
+        </div>
+        <div class="publication-list">
+          {{ range $p.publications }}
+          <article>
+            <div class="pub-meta"><span>{{ .publisher }}</span><span>{{ .year }}</span></div>
+            <h3><a href="{{ .url }}">{{ .title }} <span aria-hidden="true">↗</span></a></h3>
+            <p>{{ .summary }}</p>
+          </article>
+          {{ end }}
+        </div>
+      </section>
+
+      <section class="section-block evidence" aria-labelledby="evidence-title">
+        <div class="section-heading">
+          <p class="section-index">04 / Evidence</p>
+          <h2 id="evidence-title">Recognition & learning</h2>
+        </div>
+        <div class="evidence-grid">
+          <div>
+            <h3>Recognition</h3>
+            <ul class="clean-list">{{ range $p.recognition }}<li><strong>{{ .title }}</strong><span>{{ .detail }}</span></li>{{ end }}</ul>
+          </div>
+          <div>
+            <h3>Selected credentials</h3>
+            <ul class="credential-list">{{ range $p.certifications }}<li>{{ . }}</li>{{ end }}</ul>
+            <div class="education"><span>Education</span><strong>{{ $p.education.institution }}</strong><small>{{ $p.education.period }}</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-band" aria-labelledby="contact-title">
+        <p class="section-index">05 / Connect</p>
+        <div>
+          <h2 id="contact-title">Let’s make security<br>useful in practice.</h2>
+          <p>For professional background, research, and conversation, connect with Suhas on LinkedIn.</p>
+          <a class="button" href="{{ (index $p.links 0).url }}">View LinkedIn profile <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>{{ $p.footer }}</p>
+      <p>© {{ now.Year }} {{ $p.name }}</p>
+    </footer>
+  </div>
+</body>
+</html>

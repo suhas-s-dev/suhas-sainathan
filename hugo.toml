@@ -1,0 +1,14 @@
+baseURL = "https://suhas-sainathan.pages.dev/"
+locale = "en-US"
+title = "Suhas Sainathan"
+disableKinds = ["taxonomy", "term", "RSS"]
+enableRobotsTXT = true
+
+[params]
+  description = "Suhas Sainathan is a Senior Security Architect working across application security, cloud security, network defense, and digital forensics."
+
+[build]
+  writeStats = true
+
+[minify]
+  minifyOutput = true

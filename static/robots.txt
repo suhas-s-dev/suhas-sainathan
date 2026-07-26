@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://suhas-sainathan.pages.dev/sitemap.xml
