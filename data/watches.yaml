@@ -1,0 +1,699 @@
+hero:
+  seconds: 5
+  favorites:
+    - slug: hmt-gandaberunda
+      name: HMT Kannada Dial
+      model: Kannada Dial (Gandaberunda)
+      caliber: "manual wind · Kannada numerals"
+      size: ~34mm steel
+      year: HMT era
+      note: >-
+        Numerals in Kannada, the Gandaberunda — Karnataka's mythical two-headed bird —
+        stamped at six o'clock. The rarest thing in the case, and the one that always gets
+        a second look.
+    - slug: hmt-janata
+      name: HMT Janata
+      model: Janata
+      caliber: "manual wind · Para Shock"
+      size: ~34mm steel
+      year: HMT era
+      note: >-
+        The white-dial classic that started a thousand Indian collections. This exact
+        reference used to just be Grail 01 on a list further down this page.
+    - slug: casio-ae1200
+      name: Casio AE-1200WD
+      model: AE-1200WD World Time
+      caliber: "digital quartz · world time"
+      size: 41mm resin
+      year: 1980s design, still sold
+      note: >-
+        World map, five alarms, ten-year battery — Bond-villain energy for the price of a
+        pizza. This one used to just be on a list. Now it's on the wrist.
+    - slug: bulova-chronograph
+      name: Bulova Chronograph
+      model: Crystal Chronograph
+      caliber: "quartz chronograph · tri-register"
+      size: ~43mm two-tone steel
+      year: modern
+      note: >-
+        The one dressy enough to make the rest of the case look under-dressed. Crystal
+        hour markers, a proper tachymeter-adjacent tri-register face, and a bracelet that
+        actually catches light on purpose.
+
+stats:
+  - value: "43"
+    label: CATALOGUED SO FAR
+  - value: "13"
+    label: BRANDS & COUNTING
+  - value: "21"
+    label: JEWELS IN THE OLDEST
+  - value: "2"
+    label: GRAILS FINALLY CAUGHT
+
+nav:
+  - href: "#hmt"
+    label: HMT
+  - href: "#orient"
+    label: Orient
+  - href: "#titan"
+    label: Titan
+  - href: "#casio"
+    label: Casio
+  - href: "#g-shock"
+    label: G-Shock
+  - href: "#shelves"
+    label: Smaller Shelves
+  - href: "#grails"
+    label: Grails ✦
+  - href: "#about"
+    label: About
+  - href: "#contact"
+    label: Contact
+
+brands:
+  - id: hmt
+    name: HMT
+    num: "01"
+    blurb: >-
+      Hand-wound heroes from Bangalore — thirteen of them now, including two watches that
+      share a name and nothing else.
+    more: more HMTs are still waiting for their photo shoot
+    watches:
+      - slug: hmt-uttam
+        model: Uttam
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Uttam means "excellent" or "the best" in Hindi and Sanskrit — one more entry in
+          HMT's habit of naming watches after aspirations rather than features. Cream
+          dial, gold hands, a black leather strap. Originally catalogued under the wrong
+          brand entirely before the dial gave it away.
+      - slug: hmt-rohit
+        model: Rohit
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel bracelet
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Cream dial inside a navy outer ring, gold baton hands, a fluted steel bracelet
+          that still moves smoothly. Rohit joins the long list of HMT models named after
+          people rather than concepts — no grand meaning to unpack, just a name.
+      - slug: hmt-gandaberunda
+        model: Kannada Dial (Gandaberunda)
+        caliber: "manual wind"
+        fav: true
+        movement: HMT manual wind, 17 jewels
+        size: ~34mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Every numeral on this dial is Kannada script, and the Gandaberunda — the
+          double-headed bird that is Karnataka's state emblem — sits printed at six
+          o'clock. HMT made regional-script dials like this for local markets; finding one
+          intact is the fun part.
+      - slug: hmt-janata
+        model: Janata
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: true
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Janata means "the people" in Hindi, and HMT made so many of these that the name
+          became shorthand for reliable and unpretentious. This was Grail 01 on this page's
+          hit list until it turned up — see the grails section for the full confession.
+      - slug: hmt-kohinoor
+        model: Kohinoor
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel, cushion case
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Named after the most famous diamond in the world and priced nowhere close to it.
+          Black dial gone faintly bronze with age, a red leather strap doing most of the
+          personality here.
+      - slug: hmt-kohinoor-daydate
+        model: Kohinoor (Day-Date)
+        caliber: "manual wind · day-date"
+        fav: false
+        movement: HMT manual wind, day-date complication
+        size: ~35mm steel bracelet
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Same name as the other Kohinoor in the case, completely different watch — a
+          cooler blue-grey dial, a day-date window, and a bracelet instead of leather. HMT
+          clearly liked this name enough to build more than one watch around it.
+      - slug: hmt-chetak
+        model: Chetak
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~35mm steel bracelet
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Named for Chetak, the legendary warhorse of Rana Pratap — HMT liked borrowing
+          folklore for model names. The dial reads almost black until the light catches the
+          blue underneath.
+      - slug: hmt-vijay
+        model: Vijay
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~35mm steel bracelet
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Vijay means victory, which is a lot to ask of a watch, but this one has quietly
+          outlasted several flashier pieces in the case. Gunmetal dial, steel bracelet, no
+          drama whatsoever.
+      - slug: hmt-chethan
+        model: Chethan
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~35mm steel bracelet, cushion case
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          A warm brown dial with a cream inner ring most HMT models didn't bother with —
+          small detail, noticeably different feel on the wrist than the rest of the shelf.
+      - slug: hmt-chirag
+        model: Chirag
+        caliber: "cal. Para Shock · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~35mm steel, cushion case
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Chirag means lamp — fitting for a dial that shifts from bronze to near-black
+          depending on the light. Cushion-shaped case, brown leather, and a wind that still
+          feels precise after however many decades.
+      - slug: hmt-chinar
+        model: Chinar
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Named for Kashmir's chinar tree — there's a little maple-shaped leaf printed
+          under the logo to prove it. Clean cream dial, dauphine hands, the kind of quiet
+          dress watch HMT built a country's wrists around.
+      - slug: hmt-pilot
+        model: Pilot
+        caliber: "cal. Para Shock · manual wind"
+        fav: false
+        movement: HMT Para Shock, water protected, 17 jewels, manual wind
+        size: ~35mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Black dial, oversized Arabic 12, and "Water Protected" printed with a
+          confidence the gasket probably doesn't back up anymore. Still legible across a
+          room, which is the whole point of a pilot dial.
+      - slug: hmt-shakti
+        model: Shakti
+        caliber: "cal. Para Shock 17 · manual wind"
+        fav: false
+        movement: HMT Para Shock, 17 jewels, manual wind
+        size: ~34mm steel
+        year: HMT era
+        origin: Bangalore, India
+        note: >-
+          Shakti means strength, and this one has outlasted three watch straps' worth of
+          my own neglect. Simple stick markers, a date window it didn't strictly need, and
+          a wind that never skips.
+
+  - id: orient
+    name: Orient
+    num: "02"
+    blurb: >-
+      Four automatics, four completely different personalities — a diver, two dress
+      watches, and a rectangular tank case that proves the brand didn't only do round.
+    more: more Orients on the desk, still in the drawer they came in
+    watches:
+      - slug: orient-kd-diver
+        model: King Diver (KD)
+        caliber: "21 jewels · automatic"
+        fav: false
+        movement: Orient automatic, 21 jewels
+        size: ~40mm steel, diver case
+        year: ~1970s
+        origin: Japan
+        note: >-
+          Red sunburst dial, a full rotating count-up bezel, day-date at three — this is
+          the vintage Orient diver people build whole collections trying to replace. The
+          "KD" on the dial is short for King Diver, and it still means it.
+      - slug: orient-tank-automatic
+        model: Tank Automatic
+        caliber: "automatic · 50m"
+        fav: false
+        movement: Orient automatic
+        size: rectangular tank case
+        year: modern
+        origin: Japan
+        note: >-
+          Orient's rectangular answer to the round automatics on either side of it —
+          same movement philosophy, completely different silhouette. Black dial, Arabic
+          numerals, a date window that doesn't disrupt the symmetry.
+      - slug: orient-crystal
+        model: Crystal
+        caliber: "21 jewels · automatic"
+        fav: false
+        movement: Orient automatic, 21 jewels
+        size: ~36mm gold-tone steel
+        year: ~1980s
+        origin: Japan
+        note: >-
+          A blue-to-black gradient dial that changes personality depending on the angle,
+          gold hands and hour markers, day-date at three. The dressiest thing Orient ever
+          badged "Crystal," and it earns the name.
+      - slug: orient-automatic
+        model: Automatic 21 Jewels
+        caliber: "21 jewels · automatic"
+        fav: false
+        movement: Orient automatic, 21 jewels
+        size: ~36mm steel
+        year: ~1970s
+        origin: Japan
+        note: >-
+          No day, just a date, a black gloss dial, and the kind of unfussy confidence that
+          made these things a default choice for a generation. The crest on the dial has
+          barely faded.
+
+  - id: titan
+    name: Titan
+    num: "03"
+    blurb: >-
+      India's answer to "why is everyone still wearing HMT" — six pieces spanning a dress
+      watch, an institutional keepsake, a piece of cricket history, and three more that
+      just do rectangles and day-dates well.
+    more: more Titans queued up for their turn
+    watches:
+      - slug: titan-rect-black-roman
+        model: Rectangle (Black Dial)
+        caliber: "quartz · date"
+        fav: false
+        movement: Titan quartz
+        size: rectangular steel case
+        year: older Titan line
+        origin: Hosur, India
+        note: >-
+          Black dial, Roman numerals at 12/3/6/9 only, a date window tucked under the
+          crown-side edge. The bracelet has an unusual green marbled-resin insert running
+          through it — a decorative touch none of the other Titans bother with.
+      - slug: titan-rect-golddate
+        model: Rectangle Day-Date
+        caliber: "quartz · day-date"
+        fav: false
+        movement: Titan quartz
+        size: rectangular gold-tone steel
+        year: older Titan line
+        origin: Hosur, India
+        note: >-
+          A single Roman XII standing in for numerals, otherwise plain batons, day-date
+          at three. The rectangular cousin of the Royale a few cases down — same era,
+          sharper corners.
+      - slug: titan-round-24h
+        model: 24-Hour Day-Date
+        caliber: "quartz · day-date"
+        fav: false
+        movement: Titan quartz
+        size: ~36mm gold-tone steel bracelet
+        year: older Titan line
+        origin: Hosur, India
+        note: >-
+          A 24-hour military-time ring squeezed inside the regular hour markers, day-date
+          at three. The kind of quiet flex a brand adds once it's confident nobody needs
+          it explained.
+      - slug: icc-world-cup-2003
+        model: "ICC Cricket World Cup — South Africa 2003"
+        caliber: quartz
+        fav: false
+        movement: Titan quartz
+        size: ~34mm gold-tone
+        year: "2003"
+        origin: Hosur, India
+        note: >-
+          A tournament-branded quartz dress watch, cream dial, gold hands, serial 7597
+          stamped at six. No "Titan" text visible on the dial itself, just the ICC Cricket
+          World Cup South Africa 2003 mark — but it's a Titan-made commemorative, not a
+          mystery promo piece.
+      - slug: titan-royale
+        model: Royale
+        caliber: "quartz · day-date"
+        fav: false
+        movement: Titan quartz, ref. JK-407-R64
+        size: ~35mm gold-tone steel
+        year: "1990s"
+        origin: Hosur, India
+        note: >-
+          Roman numerals, a gold-tone case that still holds its shine, day-date at three.
+          The most classically "dress watch" piece in the case, and the one people assume
+          is the oldest — it isn't.
+      - slug: titan-pondicherry-university
+        model: Pondicherry University edition
+        caliber: "quartz"
+        fav: false
+        movement: Titan quartz, ref. N529
+        size: rectangular tank case, two-tone
+        year: commemorative edition
+        origin: Hosur, India
+        note: >-
+          A rectangular tank case with the Pondicherry University seal printed straight
+          onto the dial — the kind of institutional commemorative piece that was clearly
+          made for a specific batch of graduates or staff, not for retail. No idea how many
+          exist; this is the only one I've ever seen in person.
+
+  - id: casio
+    name: Casio
+    num: "04"
+    blurb: >-
+      Resin, modules, and pure function — a hiker, a world-timer, a would-be diver, and one
+      playing dress-up with three subdials.
+    more: the Casio drawer runs deeper than this
+    watches:
+      - slug: casio-mrw200h
+        model: MRW-200H
+        caliber: "analog quartz · day-date"
+        fav: false
+        movement: Casio analog quartz
+        size: ~45mm resin
+        year: current model
+        origin: Japan (spec)
+        note: >-
+          A rotating countdown bezel, oversized Arabic numerals, a 24-hour inner ring, and
+          "WATER RESIST 10 BAR" printed like it means business. The most diver-coded watch
+          in the case that has never once gone near a dive.
+      - slug: casio-ae1200
+        model: AE-1200WD World Time
+        caliber: "digital quartz · world time"
+        fav: true
+        movement: Casio digital quartz
+        size: 41mm resin
+        year: still in production
+        origin: Japan (spec)
+        note: >-
+          World map, 5 alarms, illuminator, a battery rated for ten years. This exact
+          reference sat on a "grails" list for a while — it's the reason that list is one
+          watch shorter now.
+      - slug: casio-edifice
+        model: Edifice
+        caliber: "quartz · multi-dial"
+        fav: false
+        movement: Casio quartz, Japan movement
+        size: ~44mm two-tone steel bracelet
+        year: current model
+        origin: Japan
+        note: >-
+          Casio's dressier line, doing its best chronograph impression with three subdials
+          that actually track day, date, and a second timezone. The two-tone bracelet is
+          doing some Bulova-adjacent cosplay, and doing it well.
+      - slug: casio-forester
+        model: Forester
+        caliber: "analog · illuminator"
+        fav: false
+        movement: Casio analog quartz
+        size: ~44mm resin
+        year: current model
+        origin: Japan (spec)
+        note: >-
+          Big Arabic numerals, an illuminator button, "WATER RESIST 100M" printed like a
+          dare. Bought in the box, worn out of it immediately — the box is still around
+          somewhere for the sentiment.
+
+  - id: g-shock
+    name: G-Shock
+    num: "05"
+    blurb: >-
+      The tank shelf of the collection — two of them now, color-coded like it was planned
+      that way.
+    more: more squares (and a Mudman) still to come
+    watches:
+      - slug: gshock-ga-combi
+        model: GA-Series combi
+        caliber: "analog-digital · module"
+        fav: false
+        movement: Casio analog-digital quartz
+        size: ~51mm resin
+        year: current model
+        origin: Japan design
+        note: >-
+          Analog hands riding on top of a full digital display — stopwatch, day, the lot —
+          in a case built to shrug off exactly the kind of dinner-table knock it's survived
+          more than once already.
+      - slug: gshock-ga100-red
+        model: GA-100 (red)
+        caliber: "analog-digital · module"
+        fav: false
+        movement: Casio analog-digital quartz
+        size: ~51mm resin
+        year: current model
+        origin: Japan design
+        note: >-
+          Same combi layout as the rest of the shelf, just louder — red accent hands
+          instead of blue, photographed somewhere over an airplane window because that's
+          apparently where this watch lives.
+
+show_grails: true
+grails:
+  - num: GRAIL 01
+    name: Seiko SKX007
+    why: >-
+      Discontinued, beloved, climbing in price while I hesitate. The diver every affordable
+      collector eventually surrenders to.
+  - num: GRAIL 02
+    name: Orient Bambino
+    why: >-
+      The domed crystal and the sector dial — an easy upgrade from the four Orients
+      already in the case, and I still don't own it.
+  - num: GRAIL 03
+    name: Titan Nebula
+    why: >-
+      Titan's premium automatic line — a step up from the two Titans already here, and
+      proof the brand can do more than quartz dress watches.
+grails_footnote: >-
+  Grail status update: two down. The Casio AE-1200 "World Time" and the HMT Janata both
+  used to be on this list — see Casio and HMT above. Titan Nebula was promoted in to keep
+  the list at three. Got a lead on the Seiko or the Orient Bambino? I trade. Seriously.
+  Ask me.
+
+shelves:
+  blurb: >-
+    Nine brands, one shelf — Bulova, Citizen, Timex, IST, West End, Seiko, Anglo-Swiss,
+    Henri Sandoz, and a couple of curiosities that don't fit anywhere else. Full stories
+    live behind each specs page; here they just get their shelf.
+  meta: 14 pieces catalogued across 9 brands
+  items:
+    - slug: bulova-chronograph
+      brand: Bulova
+      model: Crystal Chronograph
+      caliber: "quartz chronograph · tri-register"
+      fav: true
+      movement: Quartz chronograph, tri-register with date
+      size: ~43mm two-tone steel bracelet
+      year: modern
+      origin: USA design, Japan movement
+      note: >-
+        Crystal hour markers, a black bezel with polished inserts, three honest
+        sub-dials that actually function. The watch that gets worn when the occasion
+        calls for looking like you tried.
+    - slug: citizen-rect-gold
+      brand: Citizen
+      model: Quartz (Rectangular)
+      caliber: "quartz · day-date"
+      fav: false
+      movement: Citizen quartz
+      size: rectangular gold-tone
+      year: older Citizen line
+      origin: Japan
+      note: >-
+        The brassiest, most worn-in piece in the case — a rectangular tank dial with
+        the gold plating rubbed through at the corners. Day-date at three, and enough
+        honest wear to prove it was actually used.
+    - slug: citizen-quartz-blue
+      brand: Citizen
+      model: Quartz
+      caliber: "quartz · WR 50"
+      fav: false
+      movement: Citizen quartz
+      size: ~40mm steel bracelet
+      year: current model
+      origin: Japan
+      note: >-
+        The newest watch in the entire case by a wide margin. Blue sunburst dial, steel
+        bracelet, water resist 50m, nothing to prove and nothing overdesigned.
+    - slug: citizen-new-master-22
+      brand: Citizen
+      model: New Master 22
+      caliber: quartz
+      fav: false
+      movement: Citizen quartz
+      size: ~36mm steel
+      year: older Citizen line
+      origin: Japan
+      note: >-
+        An older Citizen with a gold sweep hand and the "22" badge that used to signal
+        something specific about grade or jewel count, back when Citizen still printed
+        numbers like that on the dial.
+    - slug: timex-expedition
+      brand: Timex
+      model: Expedition
+      caliber: "analog-digital · Indiglo"
+      fav: false
+      movement: Timex analog-digital quartz
+      size: ~40mm resin
+      year: current model
+      origin: USA design
+      note: >-
+        Indiglo backlight, an analog dial layered over a digital display, and a bezel
+        counting 13 through 24 for reasons that have never once been necessary on this
+        wrist.
+    - slug: ist-mayur-gold
+      brand: IST
+      model: Mayur
+      caliber: "17 jewels · supershock"
+      fav: false
+      movement: IST manual wind, 17 jewels, supershock
+      size: ~35mm steel bracelet
+      year: "~1970s–80s"
+      origin: Gurgaon, India
+      note: >-
+        Mayur means peacock in Hindi and Sanskrit, and the little bird emblem under the
+        logo confirms it. Mustard-gold textured dial, day-date at three — one of the
+        actual documented IST model lines, unlike its shelf-mate Amar.
+    - slug: ist-mayur-green
+      brand: IST
+      model: Mayur (Green Dial)
+      caliber: "17 jewels · super-shock"
+      fav: false
+      movement: IST manual wind, 17 jewels, super-shock
+      size: ~35mm steel, leather strap
+      year: "~1970s–80s"
+      origin: Gurgaon, India
+      note: >-
+        Same Mayur line, different colourway — green dial instead of gold, leather
+        instead of a bracelet, the peacock emblem carried over unchanged. Two Mayurs
+        and an Amar now share this shelf.
+    - slug: ist-amar
+      brand: IST
+      model: Amar
+      caliber: "17 jewels · shockproof"
+      fav: false
+      movement: Manual wind, 17 jewels, shockproof
+      size: ~34mm steel
+      year: "~1970s–80s"
+      origin: Made in India
+      note: >-
+        The dial had worn past confident reading until it was confirmed as an IST — Indo
+        Swiss Time, one of the more obscure names from India's home-grown mechanical era,
+        better known among collectors for supplying movements to other micro-brands than
+        for its own watches. Green sunburst dial, "17 JEWELS SHOCKPROOF MADE IN INDIA"
+        the only text that survived intact.
+    - slug: westend-sowar
+      brand: West End Watch Co
+      model: Sowar Prima
+      caliber: "manual wind · sub-seconds"
+      fav: false
+      movement: manual wind
+      size: ~30mm steel
+      year: "1930s–50s"
+      origin: Switzerland (for the Indian market)
+      note: >-
+        Sowar means "cavalryman" in Hindi and "rider" in Farsi — West End's own
+        sub-brand for the military and colonial subcontinent market, launched in 1917.
+        "Prima" marks this as the shockproofed, waterproofed variant. Sub-seconds dial,
+        dauphine hands, a case that's outlived several owners already.
+    - slug: seiko5-automatic
+      brand: Seiko
+      model: "5 Automatic"
+      caliber: "21 jewels · automatic"
+      fav: false
+      movement: Seiko automatic, 21 jewels
+      size: rectangular tank case, steel bracelet
+      year: "~1970s–80s"
+      origin: Japan
+      note: >-
+        Day-date at three, the unmistakable "5" shield on the dial, and a rectangular
+        case Seiko doesn't really make anymore. The entry point into the actual global
+        hobby, parked next to a dozen watches nobody outside India has heard of.
+    - slug: anglo-swiss-cavalry
+      brand: Anglo-Swiss Watch Co
+      model: Cavalry
+      caliber: "17 jewels · manual wind"
+      fav: false
+      movement: "FHF (Fontainemelon) manual wind, 17 jewels"
+      size: ~34mm steel bracelet
+      year: mid-1970s
+      origin: Calcutta, India (Swiss movement)
+      note: >-
+        "Shockprotected" in one word on the dial, a genuine Swiss FHF center-seconds
+        movement inside, and a name that outlived the company's watch business by
+        decades. Anglo-Swiss doesn't make watches anymore, but this one's still running.
+    - slug: henri-sandoz-fils
+      brand: Henri Sandoz & Fils
+      model: 17 Jewels Shockproof
+      caliber: "17 jewels · manual wind"
+      fav: false
+      movement: manual wind, 17 jewels, shockproof
+      size: ~34mm steel
+      year: mid-20th century
+      origin: Switzerland
+      note: >-
+        No flashy model name, just the family name in script and "17 JEWELS SHOCKPROOF"
+        underneath. A century-old Swiss name that split into several companies over the
+        decades — this is one small piece of a much longer story.
+    - slug: heritage-art-dial
+      brand: Skali Watches
+      model: Hampi at Dusk
+      caliber: quartz
+      fav: false
+      movement: Quartz
+      size: ~34mm gold-tone
+      year: current model
+      origin: India
+      note: >-
+        A photo-print dial instead of hour markers — a monochrome scene of the Hampi
+        ruins under the crystal, gold-tone case, brown leather strap. Skali Watches builds
+        entire collections around Indian heritage sites; this one bought its way in on the
+        strength of the dial alone.
+    - slug: sony-smartwatch2
+      brand: Sony
+      model: SmartWatch 2 (SW2)
+      caliber: Android companion display
+      fav: false
+      movement: OLED touchscreen, Bluetooth to phone
+      size: 1.6in display, silicone strap
+      year: "2013"
+      origin: Japan
+      note: >-
+        The one entry here with no jewels, no movement, and a battery measured in days
+        instead of years. Kept around as a reminder of the brief, strange era before
+        smartwatches all looked the same.
+
+about:
+  heading: One wrist. Zero restraint.
+  paragraphs:
+    - >-
+      It started with an HMT that wouldn't stop keeping time no matter how badly it was
+      treated, then grew sideways into Orient automatics, a couple of Titans, and whatever
+      Casio happened to be discontinuing that year. The rule is simple: no watch too
+      humble, no dial too regional, no brand too far from "premium" to earn a spot in the
+      case.
+    - >-
+      Friends, collectors, traders — say hi. Forty-three pieces are catalogued so far; more
+      keep turning up every time I dig through a drawer, and each one gets its own clean
+      background and decent light before it earns a spot on this page.

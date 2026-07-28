@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f1e9">
+<meta name="description" content="{{ .Description | default site.Params.description }}">
+<meta property="og:title" content="{{ .Title }} — {{ hugo.Data.profile.name }}">
+<meta property="og:description" content="{{ .Description | default site.Params.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+{{ $blogCSS := resources.Get "css/blog.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $blogCSS.RelPermalink }}" integrity="{{ $blogCSS.Data.Integrity }}">
+<title>{{ .Title }} — {{ hugo.Data.profile.name }}</title>
+</head>
+<body class="blog">
+<a class="skip-link" href="#blog-main">Skip to content</a>
+
+<header class="blog-header">
+  <a class="wordmark" href="{{ "/" | relURL }}"><span>SS</span> {{ hugo.Data.profile.name }}</a>
+  <nav class="blog-nav" aria-label="Primary navigation">
+    <a href="{{ "/" | relURL }}#work">Work</a>
+    <a href="{{ "/" | relURL }}#experience">Experience</a>
+    <a href="{{ "/blog/" | relURL }}" class="is-current">Blog</a>
+    <a href="{{ "/" | relURL }}#certifications">Certifications</a>
+    <a class="nav-cta" href="https://www.linkedin.com/in/suhas-sainathan/">Connect ↗</a>
+  </nav>
+</header>
+
+<main id="blog-main">
+  <section class="blog-hero">
+    <div class="blog-eyebrow">Blog · Threat Intel</div>
+    <h1>One story a week, worth <em>understanding deeply.</em></h1>
+    <p>No noise, no headline aggregation — one analyst write-up each week on the DDoS, ransomware, or application-security story that mattered most, with severity context and what it means for defenders.</p>
+  </section>
+
+  {{ $posts := .Pages.ByDate.Reverse }}
+  {{ $featured := index $posts 0 }}
+  {{ $archive := after 1 $posts }}
+  {{ $categories := slice "All" "DDoS" "Ransomware" "AppSec" "Vulnerabilities" "APT" "Phishing" }}
+
+  <section class="blog-filters">
+    <div class="filter-pills" id="blog-filter-pills">
+      {{ range $categories }}
+      <button type="button" class="filter-pill{{ if eq . "All" }} is-active{{ end }}" data-cat="{{ . }}">{{ . }}</button>
+      {{ end }}
+    </div>
+    <div class="filter-controls">
+      <input type="text" id="blog-search" placeholder="Search write-ups..." aria-label="Search write-ups">
+      <select id="blog-archive-select" aria-label="Filter by archive period">
+        <option>All weeks</option>
+        <option>Last 4 weeks</option>
+        <option>Last 3 months</option>
+        <option>{{ now.Year }} archive</option>
+      </select>
+    </div>
+  </section>
+
+  {{ with $featured }}
+  <section class="blog-featured featured-section" id="blog-featured" data-category="{{ .Params.category }}" data-search="{{ (printf "%s %s" .Title .Params.excerpt) | lower }}">
+    <div class="section-label">Featured this week</div>
+    <a href="{{ .RelPermalink }}" class="featured-card">
+      <div class="card-meta-row">
+        <span class="chip chip-severity {{ .Params.severity | lower }}">{{ .Params.severity }}</span>
+        <span class="chip chip-category">{{ .Params.category }}</span>
+        <span class="card-date">{{ .Params.week | default (.Date.Format "Jan 2, 2006") }}</span>
+      </div>
+      <h2>{{ .Title }}</h2>
+      <p>{{ .Params.excerpt }}</p>
+      <span class="read-link">Read the write-up ↗</span>
+    </a>
+  </section>
+  {{ end }}
+
+  <section class="blog-archive">
+    <div class="section-label">Archive</div>
+    <div id="blog-archive-list">
+      {{ range $archive }}
+      <a href="{{ .RelPermalink }}" class="archive-row" data-category="{{ .Params.category }}" data-search="{{ (printf "%s %s" .Title .Params.excerpt) | lower }}">
+        <span class="archive-date">{{ .Params.week | default (.Date.Format "Jan 2, 2006") }}</span>
+        <div class="archive-body">
+          <div class="card-meta-row">
+            <span class="chip chip-severity {{ .Params.severity | lower }}">{{ .Params.severity }}</span>
+            <span class="chip chip-category">{{ .Params.category }}</span>
+          </div>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.excerpt }}</p>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+    {{ if eq (len $archive) 0 }}
+    <p class="archive-empty" id="blog-archive-empty">New write-ups land here every Monday morning — this week's is above.</p>
+    {{ end }}
+  </section>
+
+  <section class="blog-newsletter">
+    <div class="newsletter-copy">
+      <div class="section-label">Stay briefed</div>
+      <h3>One email a week. No noise.</h3>
+      <p>The same write-up, delivered every Monday morning.</p>
+    </div>
+    <form class="newsletter-form" id="blog-newsletter-form" action="https://formsubmit.co/ajax/{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
+      <input type="hidden" name="_subject" value="New blog subscriber">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <label class="honey" aria-hidden="true">Leave this field empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+      <input type="email" name="email" placeholder="you@company.com" required>
+      <button type="submit">Subscribe</button>
+      <p class="newsletter-status" id="blog-newsletter-status" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="blog-footer">
+  <span>© {{ now.Year }} {{ hugo.Data.profile.name }}</span>
+  <a href="{{ "/" | relURL }}">← Back to main site</a>
+</footer>
+
+<script>
+(function () {
+  var pills = Array.prototype.slice.call(document.querySelectorAll('.filter-pill'));
+  var search = document.getElementById('blog-search');
+  var featured = document.getElementById('blog-featured');
+  var rows = Array.prototype.slice.call(document.querySelectorAll('.archive-row'));
+  var empty = document.getElementById('blog-archive-empty');
+  var activeCat = 'All';
+
+  function matches(el) {
+    var cat = (el.getAttribute('data-category') || '').toLowerCase();
+    var text = el.getAttribute('data-search') || '';
+    var catOk = activeCat === 'All' || cat === activeCat.toLowerCase();
+    var q = search.value.trim().toLowerCase();
+    var textOk = !q || text.indexOf(q) !== -1;
+    return catOk && textOk;
+  }
+
+  function applyFilters() {
+    var anyVisible = false;
+    if (featured) {
+      var show = matches(featured);
+      featured.hidden = !show;
+      if (show) anyVisible = true;
+    }
+    rows.forEach(function (row) {
+      var show = matches(row);
+      row.hidden = !show;
+      if (show) anyVisible = true;
+    });
+    var isFiltering = activeCat !== 'All' || search.value.trim() !== '';
+    if (empty) empty.hidden = rows.length > 0 || isFiltering;
+    var noResults = document.getElementById('blog-no-results');
+    if (!anyVisible && isFiltering) {
+      if (!noResults) {
+        noResults = document.createElement('p');
+        noResults.id = 'blog-no-results';
+        noResults.className = 'archive-empty';
+        noResults.textContent = 'No write-ups match that filter.';
+        document.getElementById('blog-archive-list').after(noResults);
+      }
+    } else if (noResults) {
+      noResults.remove();
+    }
+  }
+
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) { p.classList.toggle('is-active', p === pill); });
+      activeCat = pill.getAttribute('data-cat');
+      applyFilters();
+    });
+  });
+
+  search.addEventListener('input', applyFilters);
+
+  var form = document.getElementById('blog-newsletter-form');
+  var status = document.getElementById('blog-newsletter-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    status.textContent = '';
+    status.className = 'newsletter-status';
+    var data = Object.fromEntries(new FormData(form).entries());
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('bad response');
+        status.textContent = 'Subscribed — thanks! Look out for Monday’s write-up.';
+        status.className = 'newsletter-status is-success';
+        submitBtn.textContent = 'Subscribed';
+      })
+      .catch(function () {
+        status.textContent = 'Couldn’t subscribe — email me directly instead.';
+        status.className = 'newsletter-status is-error';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Subscribe';
+      });
+  });
+})();
+</script>
+</body>
+</html>

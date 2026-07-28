@@ -1,5 +1,6 @@
 name: Suhas Sainathan
-role: Senior Security Architect
+email: ssuhas2711@gmail.com
+role: Senior Security Architect Lead
 company: Akamai Technologies
 location: Bengaluru, India
 intro: >-
@@ -23,6 +24,38 @@ focus:
     text: Using vulnerability research and adversarial thinking to make defensive systems more resilient.
   - title: Digital forensics
     text: Exploring evidence collection for cloud and IoT environments where traditional methods fall short.
+experience:
+  - company: Akamai Technologies
+    role: Senior Security Architect Lead
+    period: January 2022 – Present · 4 yr 7 mo
+    location: Bengaluru, Karnataka, India
+    progression: Security Architect → Security Architect II → Security Architect II Lead → Senior Security Architect Lead
+    highlights:
+      - Act as a trusted security advisor for enterprise customers on application security, DDoS protection, and bot mitigation strategies across Akamai platforms.
+      - Lead customer escalations and incident bridges during active attacks, coordinating security operations, product teams, and customer stakeholders for rapid mitigation.
+      - Provide proactive advisory on evolving attack trends and identify architecture gaps that inform Bot Manager and advanced DDoS upsell recommendations.
+      - Consult on and troubleshoot WAF, Bot Manager, and Prolexic for global Managed Security Service customers, escalating vulnerabilities (XSS, SQLi, LFI/RFI, CSRF, OWASP Top 10) to engineering within SLA.
+      - Analyze bot signatures and DDoS attack vectors for live network and application-layer mitigation, and investigate Guardicore micro-segmentation alerts for Akamai Hunt customers.
+  - company: SISA Information Security
+    role: Associate Consultant
+    period: June 2020 – December 2021
+    location: Bengaluru, Karnataka, India
+    highlights:
+      - Assessed 100+ client applications, producing detailed vulnerability reports.
+      - Managed end-to-end delivery of application security engagements spanning web, mobile, API security, and secure code review.
+  - company: Accenture
+    role: Associate Software Engineer
+    period: August 2018 – May 2020
+    location: Bengaluru, Karnataka, India
+    highlights:
+      - Ran static and dynamic vulnerability assessments across varied technologies using automated tools and manual techniques.
+      - Built security checklists per programming language and package, and implemented OWASP and SANS standards on client applications.
+      - Researched IoT exploitation techniques and documented findings across security assessments.
+  - company: Leanovate
+    role: Intern
+    period: June 2018 – July 2018
+    location: ""
+    highlights: []
 publications:
   - title: Advanced Intuitive Model for Digital Forensics Collection Methods in the Context of Cloud Computing and IoT
     publisher: iJRASET
@@ -44,13 +77,15 @@ recognition:
 certifications:
   - title: Certified Information Systems Security Professional (CISSP)
     issuer: ISC2
-    url: https://www.isc2.org/certifications/cissp
+    url: https://www.credly.com/badges/a75161c4-6125-4d56-9fd5-b4b324b355b0/linked_in_profile
     link_label: Certification details
     featured: true
   - title: Akamai Cloud Computing Foundations
     issuer: Akamai Technologies
     url: https://www.credly.com/earner/earned/badge/48b9a575-960a-4fe2-80ad-7c9d89b03617
     link_label: View credential
+  - title: 2025 Akamai University Instructor
+    issuer: Akamai Technologies
   - title: Securing Containers and Kubernetes Ecosystem
     issuer: LinkedIn Learning
     url: https://www.linkedin.com/learning/certificates/8a6c3293ac56766e77ad314328945faf912e1e5f2245a05097229aeee0ebc91c
@@ -63,10 +98,14 @@ certifications:
     issuer: Microsoft
     url: https://www.credly.com/badges/6c33b329-1472-49a6-b6bd-13d4de0096b2/public_url
     link_label: View credential
-  - title: Google Cloud Platform Fundamentals
+  - title: "Google Cloud Platform Fundamentals: Core Infrastructure"
     issuer: Coursera
     url: https://www.coursera.org/account/accomplishments/certificate/48PTD9VTYWCP
     link_label: View credential
+  - title: Web Application Penetration Testing
+    issuer: Akamai Technologies
+  - title: IT Infra Administrator
+    issuer: Akamai Technologies
 education:
   institution: Birla Institute of Technology and Science, Pilani
   period: 2021–2023

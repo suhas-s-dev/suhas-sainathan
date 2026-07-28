@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#16140F">
+<meta name="description" content="{{ .Description | default .Site.Params.description }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+{{ $watchesCSS := resources.Get "css/watches.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $watchesCSS.RelPermalink }}" integrity="{{ $watchesCSS.Data.Integrity }}">
+<title>{{ .Title }} — {{ hugo.Data.profile.name }}</title>
+</head>
+<body>
+{{ $w := hugo.Data.watches }}
+{{ $hero := $w.hero }}
+{{ $favs := $hero.favorites }}
+{{ $first := index $favs 0 }}
+<a class="skip-link" href="#wa-main">Skip to content</a>
+
+<header class="wa-header" data-screen-label="Header">
+  <div class="wa-header-left">
+    <a class="wa-back" href="{{ "/" | relURL }}">← {{ hugo.Data.profile.name }}</a>
+    <div class="wa-wordmark">THE WRIST ARCHIVE</div>
+  </div>
+  <div class="wa-pill mono">100 watches · 1 wrist</div>
+</header>
+
+<main id="wa-main">
+<section class="wa-hero" data-screen-label="Hero" aria-labelledby="wa-hero-title">
+  <div>
+    <div class="wa-hero-eyebrow">CURRENTLY OBSESSING OVER · <span id="wa-hero-counter">1/{{ len $favs }}</span></div>
+    <h1 id="wa-hero-title"><span id="wa-hero-name">{{ $first.name }}</span></h1>
+    <div class="wa-hero-specs mono" id="wa-hero-specs">{{ $first.caliber }} · {{ $first.size }} · {{ $first.year }}</div>
+    <p class="wa-hero-note" id="wa-hero-note">{{ $first.note }}</p>
+    <div class="wa-hero-actions">
+      <a href="#hmt" class="wa-btn wa-btn-primary">Browse the collection ↓</a>
+      {{ if $w.show_grails }}<a href="#grails" class="wa-btn wa-btn-ghost">The grail list</a>{{ end }}
+    </div>
+  </div>
+  <div class="wa-hero-visual">
+    {{ range $i, $f := $favs }}
+    <div class="wa-hero-slide{{ if eq $i 0 }} is-active{{ end }}"
+         data-index="{{ $i }}"
+         data-name="{{ $f.name }}"
+         data-specs="{{ $f.caliber }} · {{ $f.size }} · {{ $f.year }}"
+         data-note="{{ $f.note }}">
+      {{ partial "watch-compare.html" (dict "slug" $f.slug "alt" $f.name) }}
+    </div>
+    {{ end }}
+    <div class="wa-hero-dots">
+      {{ range $i, $f := $favs }}
+      <span class="wa-hero-dot{{ if eq $i 0 }} is-active{{ end }}"></span>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="wa-stats" data-screen-label="Stats">
+  <div class="wa-stats-grid">
+    {{ range $w.stats }}
+    <div class="wa-stat">
+      <div class="wa-stat-value">{{ .value }}</div>
+      <div class="wa-stat-label">{{ .label }}</div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<nav class="wa-nav" data-screen-label="Section nav" aria-label="Collection sections">
+  {{ range $w.nav }}<a href="{{ .href }}">{{ .label }}</a>{{ end }}
+</nav>
+
+{{ range $b := $w.brands }}
+<section id="{{ $b.id }}" class="wa-brand" data-screen-label="{{ $b.name }}" aria-labelledby="wa-brand-title-{{ $b.id }}">
+  <div class="wa-brand-head">
+    <div class="wa-brand-num">{{ $b.num }}</div>
+    <h2 id="wa-brand-title-{{ $b.id }}">{{ $b.name }}</h2>
+    <div class="wa-brand-count mono">{{ len $b.watches }}{{ if eq (len $b.watches) 1 }} piece catalogued{{ else }} pieces catalogued{{ end }}</div>
+  </div>
+  <p class="wa-brand-blurb">{{ $b.blurb }}</p>
+  <div class="wa-grid">
+    {{ range $wt := $b.watches }}
+    <article class="wa-card">
+      <div class="wa-card-photo">
+        {{ partial "watch-compare.html" (dict "slug" $wt.slug "alt" (printf "%s %s" $b.name $wt.model)) }}
+        {{ if $wt.fav }}<div class="wa-fave mono">FAVE</div>{{ end }}
+      </div>
+      <button type="button" class="wa-card-info wa-specs-trigger"
+              data-brand="{{ $b.name }}"
+              data-model="{{ $wt.model }}"
+              data-movement="{{ $wt.movement }}"
+              data-caliber="{{ $wt.caliber }}"
+              data-case="{{ $wt.size }}"
+              data-era="{{ $wt.year }}"
+              data-origin="{{ $wt.origin }}"
+              data-note="{{ $wt.note }}">
+        <div class="wa-card-model">{{ $wt.model }}</div>
+        <div class="wa-card-caliber mono">{{ $wt.caliber }}</div>
+        <div class="wa-card-link mono">specs →</div>
+      </button>
+    </article>
+    {{ end }}
+    <div class="wa-more">
+      <div class="wa-more-plus">+</div>
+      <div class="wa-more-note">{{ $b.more }}</div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ with $w.shelves }}
+<section id="shelves" class="wa-brand" data-screen-label="Smaller Shelves" aria-labelledby="wa-brand-title-shelves">
+  <div class="wa-brand-head">
+    <div class="wa-brand-num">✦</div>
+    <h2 id="wa-brand-title-shelves">Smaller Shelves</h2>
+  </div>
+  <p class="wa-brand-blurb">{{ .blurb }}</p>
+  <p class="wa-shelf-meta mono">{{ .meta | default (printf "%d pieces catalogued" (len .items)) }}</p>
+  <div class="wa-shelf-grid">
+    {{ range $wt := .items }}
+    <article class="wa-shelf-card">
+      <div class="wa-shelf-photo">
+        {{ partial "watch-compare.html" (dict "slug" $wt.slug "alt" (printf "%s %s" $wt.brand $wt.model)) }}
+        {{ if $wt.fav }}<div class="wa-shelf-fave mono">FAVE</div>{{ end }}
+      </div>
+      <button type="button" class="wa-shelf-info wa-specs-trigger"
+              data-brand="{{ $wt.brand }}"
+              data-model="{{ $wt.model }}"
+              data-movement="{{ $wt.movement }}"
+              data-caliber="{{ $wt.caliber }}"
+              data-case="{{ $wt.size }}"
+              data-era="{{ $wt.year }}"
+              data-origin="{{ $wt.origin }}"
+              data-note="{{ $wt.note }}">
+        <div class="wa-shelf-brand mono">{{ $wt.brand }}</div>
+        <div class="wa-shelf-name">{{ $wt.model }}</div>
+        <div class="wa-shelf-specs mono">{{ $wt.caliber }}</div>
+      </button>
+    </article>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{ if $w.show_grails }}
+<section id="grails" class="wa-grails" data-screen-label="Grail list" aria-labelledby="wa-grails-title">
+  <div class="wa-grails-inner">
+    <div class="wa-grails-eyebrow">THE HIT LIST</div>
+    <h2 id="wa-grails-title">Grails I'm hunting</h2>
+    <div class="wa-grails-grid">
+      {{ range $w.grails }}
+      <div class="wa-grail">
+        <div class="wa-grail-num">{{ .num }}</div>
+        <div class="wa-grail-name">{{ .name }}</div>
+        <p class="wa-grail-why">{{ .why }}</p>
+      </div>
+      {{ end }}
+    </div>
+    <p class="wa-grails-footnote">{{ $w.grails_footnote | default "Got one of these? I trade. Seriously. Ask me." }}</p>
+  </div>
+</section>
+{{ end }}
+
+<section id="about" class="wa-about" data-screen-label="About the collector" aria-labelledby="wa-about-title">
+  <div class="wa-about-portrait">
+    <div class="wa-photo-slot is-round" data-caption="You + your wrist"></div>
+  </div>
+  <div>
+    <div class="wa-about-eyebrow">ABOUT THE COLLECTOR</div>
+    <h2 id="wa-about-title">{{ $w.about.heading }}</h2>
+    {{ range $w.about.paragraphs }}<p>{{ . }}</p>{{ end }}
+  </div>
+</section>
+
+<section id="contact" class="wa-contact" data-screen-label="Contact" aria-labelledby="wa-contact-title">
+  <div class="wa-contact-eyebrow">GET IN TOUCH</div>
+  <h2 id="wa-contact-title">Say hello, trade, or make an offer.</h2>
+  <p class="wa-contact-copy">Spotted something you want, have a lead on a grail, or just want to talk vintage dials? Email me directly — or open any piece above and send a bid.</p>
+  <a class="wa-btn wa-btn-primary" href="mailto:{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}">Email {{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }} ↗</a>
+</section>
+</main>
+
+<footer class="wa-footer">
+  <div>THE WRIST ARCHIVE — a personal catalogue</div>
+  <div>wound daily · worn always</div>
+</footer>
+
+<div id="wa-overlay" class="wa-overlay" hidden>
+  <div class="wa-overlay-card" role="dialog" aria-modal="true" aria-labelledby="wa-overlay-model">
+    <button type="button" class="wa-overlay-close" id="wa-overlay-close" data-overlay-close aria-label="Close">✕</button>
+    <div class="wa-overlay-brand mono" id="wa-overlay-brand"></div>
+    <h3 id="wa-overlay-model"></h3>
+    <div class="wa-overlay-specs" id="wa-overlay-specs"></div>
+    <p class="wa-overlay-note" id="wa-overlay-note"></p>
+
+    <div class="wa-bid">
+      <div class="wa-bid-heading">Interested in this one?</div>
+      <p class="wa-bid-sub">Send a bid — it lands straight in my inbox and I'll get back to you.</p>
+      <form id="wa-bid-form" class="wa-bid-form" action="https://formsubmit.co/ajax/{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
+        <input type="hidden" name="watch" id="wa-bid-watch" value="">
+        <input type="hidden" name="_subject" id="wa-bid-subject" value="New bid">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <label class="wa-bid-honey" aria-hidden="true">
+          Leave this field empty
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off">
+        </label>
+        <div class="wa-bid-row">
+          <label class="wa-bid-label">Bid amount (₹)
+            <input type="number" name="bid" class="wa-bid-input" min="1" step="1" required>
+          </label>
+          <label class="wa-bid-label">Your name
+            <input type="text" name="name" class="wa-bid-input" required>
+          </label>
+        </div>
+        <label class="wa-bid-label">Your email
+          <input type="email" name="email" class="wa-bid-input" required>
+        </label>
+        <button type="submit" class="wa-btn wa-btn-primary wa-bid-submit">Send bid</button>
+        <p class="wa-bid-status mono" id="wa-bid-status" role="status"></p>
+      </form>
+    </div>
+
+    <button type="button" class="wa-overlay-close-bar" data-overlay-close>Close</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Hero rotation among favorite watches.
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.wa-hero-slide'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.wa-hero-dot'));
+  var counterEl = document.getElementById('wa-hero-counter');
+  var nameEl = document.getElementById('wa-hero-name');
+  var specsEl = document.getElementById('wa-hero-specs');
+  var noteEl = document.getElementById('wa-hero-note');
+  var heroSeconds = {{ $hero.seconds | default 5 }};
+  var current = 0;
+
+  function showHero(i) {
+    current = i;
+    slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === i); });
+    dots.forEach(function (d, idx) { d.classList.toggle('is-active', idx === i); });
+    var slide = slides[i];
+    if (!slide) return;
+    counterEl.textContent = (i + 1) + '/' + slides.length;
+    nameEl.textContent = slide.getAttribute('data-name');
+    specsEl.textContent = slide.getAttribute('data-specs');
+    noteEl.textContent = slide.getAttribute('data-note');
+  }
+
+  if (slides.length > 1) {
+    setInterval(function () {
+      showHero((current + 1) % slides.length);
+    }, heroSeconds * 1000);
+  }
+
+  // Specs overlay.
+  var overlay = document.getElementById('wa-overlay');
+  var overlayBrand = document.getElementById('wa-overlay-brand');
+  var overlayModel = document.getElementById('wa-overlay-model');
+  var overlaySpecs = document.getElementById('wa-overlay-specs');
+  var overlayNote = document.getElementById('wa-overlay-note');
+  var overlayCard = overlay.querySelector('.wa-overlay-card');
+  var lastTrigger = null;
+
+  var bidForm = document.getElementById('wa-bid-form');
+  var bidWatch = document.getElementById('wa-bid-watch');
+  var bidSubject = document.getElementById('wa-bid-subject');
+  var bidStatus = document.getElementById('wa-bid-status');
+  var bidSubmit = bidForm.querySelector('.wa-bid-submit');
+
+  function openOverlay(trigger) {
+    lastTrigger = trigger;
+    var brand = trigger.getAttribute('data-brand') || '';
+    var model = trigger.getAttribute('data-model') || '';
+    overlayBrand.textContent = brand.toUpperCase();
+    overlayModel.textContent = model;
+    overlayNote.textContent = trigger.getAttribute('data-note') || '';
+    var rows = [
+      ['movement', trigger.getAttribute('data-movement')],
+      ['caliber', trigger.getAttribute('data-caliber')],
+      ['case', trigger.getAttribute('data-case')],
+      ['era', trigger.getAttribute('data-era')],
+      ['origin', trigger.getAttribute('data-origin')]
+    ];
+    overlaySpecs.innerHTML = '';
+    rows.forEach(function (row) {
+      var wrap = document.createElement('div');
+      wrap.className = 'wa-overlay-row';
+      var k = document.createElement('div');
+      k.className = 'wa-overlay-row-k mono';
+      k.textContent = row[0];
+      var v = document.createElement('div');
+      v.className = 'wa-overlay-row-v';
+      v.textContent = row[1] || '';
+      wrap.appendChild(k);
+      wrap.appendChild(v);
+      overlaySpecs.appendChild(wrap);
+    });
+
+    // Reset the bid form for whichever watch is now showing.
+    bidForm.reset();
+    bidForm.hidden = false;
+    bidSubmit.disabled = false;
+    bidSubmit.textContent = 'Send bid';
+    bidStatus.textContent = '';
+    bidStatus.className = 'wa-bid-status mono';
+    bidWatch.value = (brand + ' ' + model).trim();
+    bidSubject.value = 'New bid: ' + (brand + ' ' + model).trim();
+
+    overlay.hidden = false;
+    document.getElementById('wa-overlay-close').focus();
+  }
+
+  function closeOverlay() {
+    overlay.hidden = true;
+    if (lastTrigger) lastTrigger.focus();
+  }
+
+  document.querySelectorAll('.wa-specs-trigger').forEach(function (btn) {
+    btn.addEventListener('click', function () { openOverlay(btn); });
+  });
+  overlay.addEventListener('click', closeOverlay);
+  overlayCard.addEventListener('click', function (e) { e.stopPropagation(); });
+  document.querySelectorAll('[data-overlay-close]').forEach(function (btn) {
+    btn.addEventListener('click', closeOverlay);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !overlay.hidden) closeOverlay();
+  });
+
+  // Bid form: posts to FormSubmit's AJAX endpoint so it emails the
+  // collector without a page reload or any server-side code of our own.
+  bidForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    bidSubmit.disabled = true;
+    bidSubmit.textContent = 'Sending…';
+    bidStatus.textContent = '';
+    bidStatus.className = 'wa-bid-status mono';
+
+    var data = Object.fromEntries(new FormData(bidForm).entries());
+
+    fetch(bidForm.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error('bad response');
+        bidStatus.textContent = 'Bid sent — thanks! I’ll be in touch by email.';
+        bidStatus.className = 'wa-bid-status mono is-success';
+        bidSubmit.textContent = 'Sent';
+      })
+      .catch(function () {
+        bidStatus.textContent = 'Couldn’t send that — email me directly instead.';
+        bidStatus.className = 'wa-bid-status mono is-error';
+        bidSubmit.disabled = false;
+        bidSubmit.textContent = 'Send bid';
+      });
+  });
+})();
+
+</script>
+</body>
+</html>

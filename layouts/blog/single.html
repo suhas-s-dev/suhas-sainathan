@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f1e9">
+<meta name="description" content="{{ .Params.excerpt | default site.Params.description }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Params.excerpt | default site.Params.description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ .Permalink }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+{{ $blogCSS := resources.Get "css/blog.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $blogCSS.RelPermalink }}" integrity="{{ $blogCSS.Data.Integrity }}">
+<title>{{ .Title }} — {{ hugo.Data.profile.name }}</title>
+</head>
+<body class="blog">
+<a class="skip-link" href="#blog-main">Skip to content</a>
+
+<header class="blog-header">
+  <a class="wordmark" href="{{ "/" | relURL }}"><span>SS</span> {{ hugo.Data.profile.name }}</a>
+  <nav class="blog-nav" aria-label="Primary navigation">
+    <a href="{{ "/" | relURL }}#work">Work</a>
+    <a href="{{ "/" | relURL }}#experience">Experience</a>
+    <a href="{{ "/blog/" | relURL }}" class="is-current">Blog</a>
+    <a href="{{ "/" | relURL }}#certifications">Certifications</a>
+    <a class="nav-cta" href="https://www.linkedin.com/in/suhas-sainathan/">Connect ↗</a>
+  </nav>
+</header>
+
+<main id="blog-main">
+  <article class="post-main">
+    <header class="post-header">
+      <div class="card-meta-row">
+        <span class="chip chip-severity {{ .Params.severity | lower }}">{{ .Params.severity }}</span>
+        <span class="chip chip-category">{{ .Params.category }}</span>
+        <span class="post-date">{{ .Params.week | default (.Date.Format "Jan 2, 2006") }}</span>
+      </div>
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="post-body">
+      {{ .Content }}
+    </div>
+    <a class="post-back" href="{{ "/blog/" | relURL }}">← Back to all write-ups</a>
+  </article>
+</main>
+
+<footer class="blog-footer">
+  <span>© {{ now.Year }} {{ hugo.Data.profile.name }}</span>
+  <a href="{{ "/" | relURL }}">← Back to main site</a>
+</footer>
+</body>
+</html>
