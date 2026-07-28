@@ -39,7 +39,7 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{{ $p.location }}</p>
-          <h1 id="hero-title">Security thinking for systems that <em>cannot afford surprises.</em></h1>
+          <h1 id="hero-title">{{ $p.role }} at {{ $p.company }}</h1>
           <p class="lead">{{ $p.intro }}</p>
           <div class="hero-actions">
             {{ range $p.links }}<a href="{{ .url }}" class="text-link">{{ .label }} <span aria-hidden="true">↗</span></a>{{ end }}
@@ -157,8 +157,11 @@
         <p class="section-index">07 / Connect</p>
         <div>
           <h2 id="contact-title">Let’s make security<br>useful in practice.</h2>
-          <p>For professional background, research, and conversation, connect with Suhas on LinkedIn.</p>
-          <a class="button" href="{{ (index $p.links 0).url }}">View LinkedIn profile <span aria-hidden="true">↗</span></a>
+          <p>For professional background, research, and conversation, connect with Suhas on LinkedIn or reach out directly by email.</p>
+          <div class="contact-actions">
+            <a class="button" href="{{ (index $p.links 0).url }}">View LinkedIn profile <span aria-hidden="true">↗</span></a>
+            <a class="button button-outline" href="mailto:{{ $p.email }}">{{ $p.email }}</a>
+          </div>
         </div>
       </section>
     </main>
