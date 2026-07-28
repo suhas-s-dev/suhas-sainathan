@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#f4f1e9">
 <meta name="description" content="{{ .Description | default site.Params.description }}">
-<meta property="og:title" content="{{ .Title }} — {{ hugo.Data.profile.name }}">
+<meta property="og:title" content="{{ .Title }} — {{ site.Data.profile.name }}">
 <meta property="og:description" content="{{ .Description | default site.Params.description }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ .Permalink }}">
@@ -13,13 +13,13 @@
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{ $blogCSS := resources.Get "css/blog.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $blogCSS.RelPermalink }}" integrity="{{ $blogCSS.Data.Integrity }}">
-<title>{{ .Title }} — {{ hugo.Data.profile.name }}</title>
+<title>{{ .Title }} — {{ site.Data.profile.name }}</title>
 </head>
 <body class="blog">
 <a class="skip-link" href="#blog-main">Skip to content</a>
 
 <header class="blog-header">
-  <a class="wordmark" href="{{ "/" | relURL }}"><span>SS</span> {{ hugo.Data.profile.name }}</a>
+  <a class="wordmark" href="{{ "/" | relURL }}"><span>SS</span> {{ site.Data.profile.name }}</a>
   <nav class="blog-nav" aria-label="Primary navigation">
     <a href="{{ "/" | relURL }}#work">Work</a>
     <a href="{{ "/" | relURL }}#experience">Experience</a>
@@ -102,7 +102,7 @@
       <h3>One email a week. No noise.</h3>
       <p>The same write-up, delivered every Monday morning.</p>
     </div>
-    <form class="newsletter-form" id="blog-newsletter-form" action="https://formsubmit.co/ajax/{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
+    <form class="newsletter-form" id="blog-newsletter-form" action="https://formsubmit.co/ajax/{{ site.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
       <input type="hidden" name="_subject" value="New blog subscriber">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -115,7 +115,7 @@
 </main>
 
 <footer class="blog-footer">
-  <span>© {{ now.Year }} {{ hugo.Data.profile.name }}</span>
+  <span>© {{ now.Year }} {{ site.Data.profile.name }}</span>
   <a href="{{ "/" | relURL }}">← Back to main site</a>
 </footer>
 

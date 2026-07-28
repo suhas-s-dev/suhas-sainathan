@@ -15,10 +15,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 {{ $watchesCSS := resources.Get "css/watches.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $watchesCSS.RelPermalink }}" integrity="{{ $watchesCSS.Data.Integrity }}">
-<title>{{ .Title }} — {{ hugo.Data.profile.name }}</title>
+<title>{{ .Title }} — {{ site.Data.profile.name }}</title>
 </head>
 <body>
-{{ $w := hugo.Data.watches }}
+{{ $w := site.Data.watches }}
 {{ $hero := $w.hero }}
 {{ $favs := $hero.favorites }}
 {{ $first := index $favs 0 }}
@@ -26,7 +26,7 @@
 
 <header class="wa-header" data-screen-label="Header">
   <div class="wa-header-left">
-    <a class="wa-back" href="{{ "/" | relURL }}">← {{ hugo.Data.profile.name }}</a>
+    <a class="wa-back" href="{{ "/" | relURL }}">← {{ site.Data.profile.name }}</a>
     <div class="wa-wordmark">THE WRIST ARCHIVE</div>
   </div>
   <div class="wa-pill mono">100 watches · 1 wrist</div>
@@ -183,7 +183,7 @@
   <div class="wa-contact-eyebrow">GET IN TOUCH</div>
   <h2 id="wa-contact-title">Say hello, trade, or make an offer.</h2>
   <p class="wa-contact-copy">Spotted something you want, have a lead on a grail, or just want to talk vintage dials? Email me directly — or open any piece above and send a bid.</p>
-  <a class="wa-btn wa-btn-primary" href="mailto:{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}">Email {{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }} ↗</a>
+  <a class="wa-btn wa-btn-primary" href="mailto:{{ site.Data.profile.email | default "ssuhas2711@gmail.com" }}">Email {{ site.Data.profile.email | default "ssuhas2711@gmail.com" }} ↗</a>
 </section>
 </main>
 
@@ -203,7 +203,7 @@
     <div class="wa-bid">
       <div class="wa-bid-heading">Interested in this one?</div>
       <p class="wa-bid-sub">Send a bid — it lands straight in my inbox and I'll get back to you.</p>
-      <form id="wa-bid-form" class="wa-bid-form" action="https://formsubmit.co/ajax/{{ hugo.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
+      <form id="wa-bid-form" class="wa-bid-form" action="https://formsubmit.co/ajax/{{ site.Data.profile.email | default "ssuhas2711@gmail.com" }}" method="POST">
         <input type="hidden" name="watch" id="wa-bid-watch" value="">
         <input type="hidden" name="_subject" id="wa-bid-subject" value="New bid">
         <input type="hidden" name="_template" value="table">

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#071c26">
   <meta name="description" content="{{ site.Params.description }}">
-  <meta property="og:title" content="{{ hugo.Data.profile.name }} — {{ hugo.Data.profile.role }}">
+  <meta property="og:title" content="{{ site.Data.profile.name }} — {{ site.Data.profile.role }}">
   <meta property="og:description" content="{{ site.Params.description }}">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="{{ .Permalink }}">
@@ -15,11 +15,11 @@
   <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
-  <title>{{ hugo.Data.profile.name }} — {{ hugo.Data.profile.role }}</title>
-  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "Person" "name" hugo.Data.profile.name "jobTitle" hugo.Data.profile.role "worksFor" (dict "@type" "Organization" "name" hugo.Data.profile.company) "address" (dict "@type" "PostalAddress" "addressLocality" hugo.Data.profile.location) "url" .Permalink "sameAs" (slice "https://www.linkedin.com/in/suhas-sainathan/" "https://github.com/suhas-s-dev") | jsonify | safeJS }}</script>
+  <title>{{ site.Data.profile.name }} — {{ site.Data.profile.role }}</title>
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "Person" "name" site.Data.profile.name "jobTitle" site.Data.profile.role "worksFor" (dict "@type" "Organization" "name" site.Data.profile.company) "address" (dict "@type" "PostalAddress" "addressLocality" site.Data.profile.location) "url" .Permalink "sameAs" (slice "https://www.linkedin.com/in/suhas-sainathan/" "https://github.com/suhas-s-dev") | jsonify | safeJS }}</script>
 </head>
 <body>
-  {{ $p := hugo.Data.profile }}
+  {{ $p := site.Data.profile }}
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="page-shell">
     <header class="site-header" aria-label="Site header">
