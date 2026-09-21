@@ -16,7 +16,7 @@ links:
   - label: GitHub
     url: https://github.com/suhas-s-dev
   - label: Threat Intel
-    url: https://apj-threat-intel.threat-intel.workers.dev/
+    url: https://cti-watch.threat-intel.workers.dev/
 focus:
   - title: Security architecture
     text: Designing clear, durable controls for applications, platforms, and the teams operating them.
