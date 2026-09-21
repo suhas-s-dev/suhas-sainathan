@@ -63,6 +63,8 @@
 .post-body ul{margin:0 0 1.3em;padding-left:1.3em}
 .post-body li{margin-bottom:.5em}
 .post-body strong{color:var(--ink)}
+.post-body img{display:block;width:100%;height:auto;margin:1.8em 0 .5em;border:1px solid var(--line)}
+.post-body p:has(> em:only-child){margin-top:0;margin-bottom:2em;font-size:.85rem;color:var(--muted)}
 .post-back{display:inline-block;margin-top:2.5rem;font-size:.9rem;font-weight:600;color:var(--signal);text-decoration:none}
 
 .archive-row[hidden],.featured-section[hidden]{display:none}
