@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#071c26">
+  <meta name="theme-color" content="#0B0F14">
   <meta name="description" content="{{ site.Params.description }}">
   <meta property="og:title" content="{{ site.Data.profile.name }} — {{ site.Data.profile.role }}">
   <meta property="og:description" content="{{ site.Params.description }}">
@@ -13,164 +13,206 @@
   <meta name="twitter:card" content="summary">
   <link rel="canonical" href="{{ .Permalink }}">
   <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   <title>{{ site.Data.profile.name }} — {{ site.Data.profile.role }}</title>
   <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "Person" "name" site.Data.profile.name "jobTitle" site.Data.profile.role "worksFor" (dict "@type" "Organization" "name" site.Data.profile.company) "address" (dict "@type" "PostalAddress" "addressLocality" site.Data.profile.location) "url" .Permalink "sameAs" (slice "https://www.linkedin.com/in/suhas-sainathan/" "https://github.com/suhas-s-dev") | jsonify | safeJS }}</script>
 </head>
 <body>
-  {{ $p := site.Data.profile }}
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="page-shell">
-    <header class="site-header" aria-label="Site header">
-      <a class="wordmark" href="/" aria-label="{{ $p.name }} home"><span>SS</span> {{ $p.name }}</a>
-      <nav aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#writing">Research</a>
-        <a href="#certifications">Certifications</a>
-        <a href="{{ "/blog/" | relURL }}">Blog</a>
-        <a class="nav-watches" href="{{ "/watches/" | relURL }}">My Watch Collection</a>
-        <a class="nav-cta" href="{{ (index $p.links 0).url }}">Connect <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
+{{ $p := site.Data.profile }}
+{{ $linkedin := index (where $p.links "label" "LinkedIn") 0 }}
+{{ $github := index (where $p.links "label" "GitHub") 0 }}
+{{ $cti := index (where $p.links "label" "Threat Intel") 0 }}
+{{ $posts := (where site.RegularPages "Section" "blog").ByDate.Reverse }}
+<a class="skip-link" href="#main">Skip to content</a>
+{{ partial "site-nav.html" . }}
 
-    <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{{ $p.location }}</p>
-          <h1 id="hero-title">{{ $p.role }} at {{ $p.company }}</h1>
-          <p class="lead">{{ $p.intro }}</p>
-          <div class="hero-actions">
-            {{ range $p.links }}<a href="{{ .url }}" class="text-link">{{ .label }} <span aria-hidden="true">↗</span></a>{{ end }}
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="status"><span class="dot" aria-hidden="true"></span>{{ $p.location }} · Security architecture</div>
+          <h1 id="hero-title">{{ $p.headline }}</h1>
+          <p>I’m <strong>{{ $p.name }}</strong>, {{ $p.role }} at {{ $p.company }}. {{ $p.intro }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#expertise">Explore my work →</a>
+            <a class="btn btn-secondary" href="{{ $linkedin.url }}">LinkedIn ↗</a>
+            <a class="btn btn-secondary" href="{{ $github.url }}">GitHub ↗</a>
           </div>
         </div>
-        <aside class="profile-card" aria-label="Profile">
-          <div class="portrait-wrap">
-            <img src="{{ "images/suhas-sainathan.jpg" | relURL }}" width="200" height="200" alt="Portrait of {{ $p.name }}">
-            <span class="corner-mark" aria-hidden="true"></span>
+        <div class="hero-card">
+          <div class="portrait">
+            <img src="{{ "images/suhas-sainathan.jpg" | relURL }}" width="400" height="450" alt="Portrait of {{ $p.name }}">
           </div>
-          <div class="profile-meta">
-            <strong>{{ $p.name }}</strong>
-            <span>{{ $p.role }}</span>
-            <span>{{ $p.company }}</span>
-          </div>
-        </aside>
-      </section>
+          <div class="sig" aria-hidden="true">{{ $p.tagline }}</div>
+          <div class="identity"><b>{{ $p.name }}</b><span>{{ $p.role }} · {{ $p.company }}</span></div>
+        </div>
+      </div>
+      <div class="metrics">
+        {{ range $p.metrics }}<div class="metric"><b>{{ .value }}</b><span>{{ .label }}</span></div>{{ end }}
+      </div>
+    </div>
+  </section>
 
-      <section class="statement" aria-labelledby="about-title">
-        <p class="section-index">01 / About</p>
+  <section id="expertise" class="section" aria-labelledby="expertise-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">01 / Expertise</p>
         <div>
-          <h2 id="about-title">Complex systems. Clear decisions.</h2>
+          <h2 id="expertise-title">Deep technical range. Practical operating judgment.</h2>
           <p>{{ $p.about }}</p>
         </div>
-      </section>
+      </div>
+      <div class="cap-grid">
+        {{ range $i, $c := $p.capabilities }}
+        <article class="cap">
+          <span class="cap-num">0{{ add $i 1 }}</span>
+          <h3>{{ $c.title }}</h3>
+          <p>{{ $c.text }}</p>
+          <div class="tags">{{ range $c.tags }}<span class="tag">{{ . }}</span>{{ end }}</div>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
 
-      <section id="work" class="section-block" aria-labelledby="focus-title">
-        <div class="section-heading">
-          <p class="section-index">02 / Focus</p>
-          <h2 id="focus-title">Areas of practice</h2>
-        </div>
-        <div class="focus-grid">
-          {{ range $i, $item := $p.focus }}
-          <article class="focus-card">
-            <span>0{{ add $i 1 }}</span>
-            <h3>{{ $item.title }}</h3>
-            <p>{{ $item.text }}</p>
-          </article>
-          {{ end }}
-        </div>
-      </section>
-
-      <section id="experience" class="section-block experience" aria-labelledby="experience-title">
-        <div class="section-heading">
-          <p class="section-index">03 / Experience</p>
-          <h2 id="experience-title">Where the work happened</h2>
-        </div>
-        <div class="experience-list">
-          {{ range $p.experience }}
-          <article>
-            <div class="exp-meta"><span>{{ .period }}</span>{{ with .location }}<span>{{ . }}</span>{{ end }}</div>
-            <div class="exp-body">
-              <h3>{{ .role }} <span class="exp-company">— {{ .company }}</span></h3>
-              {{ with .progression }}<p class="exp-progression">{{ . }}</p>{{ end }}
-              {{ with .highlights }}<ul class="exp-highlights">{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
-            </div>
-          </article>
-          {{ end }}
-        </div>
-      </section>
-
-      <section id="writing" class="section-block research" aria-labelledby="research-title">
-        <div class="section-heading">
-          <p class="section-index">04 / Research</p>
-          <h2 id="research-title">Published work</h2>
-        </div>
-        <div class="publication-list">
-          {{ range $p.publications }}
-          <article>
-            <div class="pub-meta"><span>{{ .publisher }}</span><span>{{ .year }}</span></div>
-            <h3><a href="{{ .url }}">{{ .title }} <span aria-hidden="true">↗</span></a></h3>
-            <p>{{ .summary }}</p>
-          </article>
-          {{ end }}
-        </div>
-      </section>
-
-      <section id="certifications" class="section-block certifications" aria-labelledby="certifications-title">
-        <div class="section-heading">
-          <p class="section-index">05 / Certifications</p>
-          <h2 id="certifications-title">Credentials built on practice</h2>
-        </div>
-        <div class="certification-grid">
-          {{ range $c := $p.certifications }}
-          <article class="certification-card{{ if $c.featured }} certification-card--featured{{ end }}">
-            <div class="certification-mark" aria-hidden="true">{{ if $c.featured }}CISSP{{ else }}✓{{ end }}</div>
-            <div>
-              <p class="certification-issuer">{{ $c.issuer }}</p>
-              <h3>{{ $c.title }}</h3>
-              {{ with $c.url }}<a href="{{ . }}">{{ $c.link_label }} <span aria-hidden="true">↗</span></a>{{ end }}
-            </div>
-          </article>
-          {{ end }}
-        </div>
-      </section>
-
-      <section class="section-block evidence" aria-labelledby="evidence-title">
-        <div class="section-heading">
-          <p class="section-index">06 / Evidence</p>
-          <h2 id="evidence-title">Recognition & education</h2>
-        </div>
-        <div class="evidence-grid">
-          <div>
-            <h3>Recognition</h3>
-            <ul class="clean-list">{{ range $p.recognition }}<li><strong>{{ .title }}</strong><span>{{ .detail }}</span></li>{{ end }}</ul>
-          </div>
-          <div>
-            <h3>Education</h3>
-            <div class="education"><span>Graduate study</span><strong>{{ $p.education.institution }}</strong><small>{{ $p.education.period }}</small></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact-band" aria-labelledby="contact-title">
-        <p class="section-index">07 / Connect</p>
+  <section id="work" class="section" aria-labelledby="work-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">02 / Selected work</p>
         <div>
-          <h2 id="contact-title">Let’s make security<br>useful in practice.</h2>
-          <p>For professional background, research, and conversation, connect with Suhas on LinkedIn or reach out directly by email.</p>
-          <div class="contact-actions">
-            <a class="button" href="{{ (index $p.links 0).url }}">View LinkedIn profile <span aria-hidden="true">↗</span></a>
-            <a class="button button-outline" href="mailto:{{ $p.email }}">{{ $p.email }}</a>
-          </div>
+          <h2 id="work-title">Analysis and research, in public.</h2>
+          <p>A weekly threat write-up for defenders, alongside peer-reviewed research on forensics and internet routing.</p>
         </div>
-      </section>
-    </main>
+      </div>
+      <div class="featured">
+        {{ with index $posts 0 }}
+        <article class="feature-main">
+          <div>
+            <div class="kicker">Threat Intel Weekly · Latest · {{ .Params.category }}</div>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Params.excerpt }}</p>
+          </div>
+          <a class="feature-link" href="{{ .RelPermalink }}">Read the write-up →</a>
+        </article>
+        {{ end }}
+        <div class="feature-stack">
+          {{ range $p.publications }}
+          <article class="feature-side">
+            <div>
+              <div class="kicker">Research · {{ .publisher }} · {{ .year }}</div>
+              <h4>{{ .title }}</h4>
+              <p>{{ .summary }}</p>
+            </div>
+            <a class="feature-link" href="{{ .url }}">View research ↗</a>
+          </article>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      <p>{{ $p.footer }}</p>
-      <p><a href="{{ "/blog/" | relURL }}">Blog ↗</a> · <a href="{{ "/watches/" | relURL }}">Watch collection ↗</a></p>
-      <p>© {{ now.Year }} {{ $p.name }}</p>
-    </footer>
-  </div>
+  <section id="experience" class="section" aria-labelledby="experience-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">03 / Experience</p>
+        <div><h2 id="experience-title">Where the work happened.</h2></div>
+      </div>
+      <div class="timeline">
+        {{ range $p.experience }}
+        <article class="job">
+          <div class="job-meta">{{ .period }}{{ with .location }} · {{ . }}{{ end }}</div>
+          <h3>{{ .role }}</h3>
+          <div class="company">{{ .company }}</div>
+          {{ with .progression }}<div class="progression">{{ . }}</div>{{ end }}
+          {{ with .highlights }}<ul>{{ range . }}<li>{{ . }}</li>{{ end }}</ul>{{ end }}
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials" class="section" aria-labelledby="credentials-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">04 / Credentials</p>
+        <div><h2 id="credentials-title">Credentials built on practice.</h2></div>
+      </div>
+      <div class="cred-grid">
+        {{ range $c := $p.certifications }}
+        {{ if $c.url }}<a class="cred{{ if $c.featured }} primary{{ end }}" href="{{ $c.url }}">{{ else }}<div class="cred{{ if $c.featured }} primary{{ end }}">{{ end }}
+          <b>{{ $c.title }}</b>
+          <span>{{ $c.issuer }}{{ if $c.url }} ↗{{ end }}</span>
+        {{ if $c.url }}</a>{{ else }}</div>{{ end }}
+        {{ end }}
+      </div>
+      <h3 class="subhead">Recognition &amp; education</h3>
+      <div class="cred-grid">
+        {{ range $p.recognition }}<div class="cred"><b>{{ .title }}</b><span>{{ .detail }}</span></div>{{ end }}
+        <div class="cred"><b>{{ $p.education.institution }}</b><span>Graduate study · {{ $p.education.period }}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beyond" class="section" aria-labelledby="beyond-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">05 / Projects &amp; interests</p>
+        <div>
+          <h2 id="beyond-title">Writing, tooling, and a wrist full of watches.</h2>
+        </div>
+      </div>
+      <div class="personal">
+        <a class="personal-card blog" href="{{ "/blog/" | relURL }}">
+          <div>
+            <div class="kicker">Writing · Analysis</div>
+            <h3>Threat Intel Weekly</h3>
+            <p>A weekly analyst write-up on the DDoS, ransomware, vulnerability or application-security story that mattered most, with context for defenders.</p>
+          </div>
+          <div class="mini-stat">{{ len $posts }} write-ups · Read the blog →</div>
+        </a>
+        {{ with $cti }}
+        <a class="personal-card cti" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+          <div>
+            <div class="kicker">Threat intelligence · Tool</div>
+            <h3>CTI Watch</h3>
+            <p>A Cloudflare Worker-powered threat-intelligence feed for quickly checking current CTI signals.</p>
+          </div>
+          <div class="mini-stat">Open CTI Watch ↗</div>
+        </a>
+        {{ end }}
+        {{ $ws := site.Data.watches.stats }}
+        <a class="personal-card watch" href="{{ "/watches/" | relURL }}">
+          <div>
+            <div class="kicker">Personal archive</div>
+            <h3>The Wrist Archive</h3>
+            <p>A visual catalogue of vintage and modern watches, from HMT and Orient to Casio, Titan and smaller shelves.</p>
+          </div>
+          <div class="mini-stat">{{ (index $ws 0).value }} catalogued · {{ (index $ws 1).value }} brands →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <p class="eyebrow">Let’s connect</p>
+          <h2 id="contact-title">Security should be<br>useful in practice.</h2>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:{{ $p.email }}">Email me →</a>
+          <a class="btn btn-secondary" href="{{ $linkedin.url }}">LinkedIn ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{ partial "site-footer.html" . }}
 </body>
 </html>

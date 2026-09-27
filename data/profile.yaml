@@ -4,8 +4,8 @@ role: Senior Security Architect Lead
 company: Akamai Technologies
 location: Bengaluru, India
 intro: >-
-  I help organizations understand and reduce security risk across modern applications,
-  cloud platforms, and internet infrastructure.
+  I work across application security, DDoS defense, bot mitigation and cloud security,
+  turning complex attacks into clear, operable decisions.
 about: >-
   My work sits where deep technical investigation meets practical security architecture.
   I care about turning complex findings into defenses that teams can operate, from
@@ -17,15 +17,30 @@ links:
     url: https://github.com/suhas-s-dev
   - label: Threat Intel
     url: https://cti-watch.threat-intel.workers.dev/
-focus:
-  - title: Security architecture
-    text: Designing clear, durable controls for applications, platforms, and the teams operating them.
-  - title: Cloud & container security
-    text: Securing modern infrastructure across cloud foundations, containers, Kubernetes, and zero-trust boundaries.
-  - title: Offensive insight
-    text: Using vulnerability research and adversarial thinking to make defensive systems more resilient.
-  - title: Digital forensics
-    text: Exploring evidence collection for cloud and IoT environments where traditional methods fall short.
+headline: Security architecture for systems that cannot afford ambiguity.
+tagline: CISSP · APPSEC · DDoS
+metrics:
+  - value: "100+"
+    label: client applications assessed
+  - value: "8+ yrs"
+    label: security experience
+  - value: "4"
+    label: core security domains
+  - value: CISSP
+    label: ISC2 certified
+capabilities:
+  - title: Application security
+    text: Architecture and incident guidance across WAF, API security, OWASP attack classes, secure code review and production-facing controls.
+    tags: [WAF, API security, OWASP, Secure code review]
+  - title: DDoS & bot defense
+    text: Hands-on work with high-volume network and application attacks, bot signatures, mitigation strategy, escalation and customer response.
+    tags: [Prolexic, L3/L4, HTTP floods, Bot Manager]
+  - title: Cloud & platform security
+    text: Security design for cloud foundations, containers, Kubernetes and zero-trust boundaries, with an operator's view of what teams can actually maintain.
+    tags: [Kubernetes, Containers, Zero trust, Cloud]
+  - title: Threat-led investigation
+    text: Adversarial thinking, live incident analysis, vulnerability research and digital forensics translated into defenses and decision-ready recommendations.
+    tags: [Threat intel, Forensics, Vuln research, IR]
 experience:
   - company: Akamai Technologies
     role: Senior Security Architect Lead

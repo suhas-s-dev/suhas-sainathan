@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071c26">
+<meta name="theme-color" content="#0B0F14">
 <meta name="description" content="{{ .Description | default site.Params.description }}">
 <meta property="og:title" content="{{ .Title }} — {{ site.Data.profile.name }}">
 <meta property="og:description" content="{{ .Description | default site.Params.description }}">
@@ -20,21 +20,10 @@
 <body>
 {{ $p := site.Data.profile }}
 <a class="skip-link" href="#blog-main">Skip to content</a>
-<div class="page-shell">
-  <header class="site-header" aria-label="Site header">
-    <a class="wordmark" href="{{ "/" | relURL }}" aria-label="{{ $p.name }} home"><span>SS</span> {{ $p.name }}</a>
-    <nav aria-label="Primary navigation">
-      <a href="{{ "/" | relURL }}#work">Work</a>
-      <a href="{{ "/" | relURL }}#experience">Experience</a>
-      <a href="{{ "/blog/" | relURL }}" style="font-weight:600">Blog</a>
-      <a href="{{ "/" | relURL }}#certifications">Certifications</a>
-      <a class="nav-cta" href="{{ (index $p.links 0).url }}">Connect <span aria-hidden="true">↗</span></a>
-    </nav>
-  </header>
-
-  <main id="blog-main">
+{{ partial "site-nav.html" . }}
+<main id="blog-main" class="container">
     <section class="blog-hero">
-      <p class="blog-eyebrow"><span class="status-dot" aria-hidden="true"></span>Blog</p>
+      <div class="status"><span class="dot" aria-hidden="true"></span>Blog · Weekly analysis</div>
       <h1>Threat Intel Weekly</h1>
       <p>One analyst write-up a week on the DDoS, ransomware, or application-security story that mattered most, with severity context and what it means for defenders.</p>
     </section>
@@ -101,7 +90,7 @@
 
     <section class="blog-newsletter">
       <div class="newsletter-copy">
-        <p class="section-label" style="color:var(--signal)">Stay briefed</p>
+        <p class="section-label">Stay briefed</p>
         <h3>One email a week. No noise.</h3>
         <p>The same write-up, delivered every Monday morning.</p>
       </div>
@@ -116,13 +105,7 @@
       </form>
     </section>
   </main>
-
-  <footer>
-    <p>{{ $p.footer }}</p>
-    <p><a href="{{ "/watches/" | relURL }}">Watch collection ↗</a></p>
-    <p>© {{ now.Year }} {{ $p.name }}</p>
-  </footer>
-</div>
+{{ partial "site-footer.html" . }}
 
 <script>
 (function () {

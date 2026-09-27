@@ -1,0 +1,23 @@
+<svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title2 desc2" font-family="Manrope,'DM Sans',system-ui,sans-serif">
+  <title id="title2">Keymous+ observed attack peaks, solo vs. collaborative</title>
+  <desc id="desc2">Bar chart. A solo Keymous+ attack peaks at 11.8 Gbps. A collaborative attack run jointly with allied groups peaks at 44 Gbps, roughly 3.7 times larger.</desc>
+  <rect x="0" y="0" width="760" height="320" fill="#111821"/>
+
+  <text x="40" y="42" font-size="19" fill="#EEF4F8" font-weight="700">Alliances multiply the volume, not just the headlines</text>
+  <text x="40" y="64" font-size="13" fill="#96A4B4">Peak observed attack bandwidth, solo vs. joint operations</text>
+
+  <!-- baseline -->
+  <line x1="80" y1="260" x2="700" y2="260" stroke="rgba(238,244,248,.25)" stroke-width="1"/>
+
+  <!-- Solo bar -->
+  <rect x="160" y="180" width="120" height="80" fill="#3A5774"/>
+  <text x="220" y="168" font-size="15" fill="#EEF4F8" font-weight="700" text-anchor="middle">11.8 Gbps</text>
+  <text x="220" y="284" font-size="13.5" fill="#96A4B4" text-anchor="middle">Solo Keymous+ attack</text>
+
+  <!-- Joint bar -->
+  <rect x="440" y="90" width="120" height="170" fill="#62F6B5"/>
+  <text x="500" y="78" font-size="15" fill="#EEF4F8" font-weight="700" text-anchor="middle">44 Gbps</text>
+  <text x="500" y="284" font-size="13.5" fill="#96A4B4" text-anchor="middle">Joint operation w/ allied crews</text>
+
+  <text x="40" y="312" font-size="12.5" fill="#96A4B4">Coordinated runs with groups like NoName057(16) and Moroccan Dragons roughly quadruple peak volume.</text>
+</svg>

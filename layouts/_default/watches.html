@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#16140F">
+<meta name="theme-color" content="#0B0F14">
 <meta name="description" content="{{ .Description | default .Site.Params.description }}">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
@@ -12,7 +12,9 @@
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{ $watchesCSS := resources.Get "css/watches.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $watchesCSS.RelPermalink }}" integrity="{{ $watchesCSS.Data.Integrity }}">
 <title>{{ .Title }} — {{ site.Data.profile.name }}</title>
@@ -24,17 +26,12 @@
 {{ $first := index $favs 0 }}
 <a class="skip-link" href="#wa-main">Skip to content</a>
 
-<header class="wa-header" data-screen-label="Header">
-  <div class="wa-header-left">
-    <a class="wa-back" href="{{ "/" | relURL }}">← {{ site.Data.profile.name }}</a>
-    <div class="wa-wordmark">THE WRIST ARCHIVE</div>
-  </div>
-  <div class="wa-pill mono">100 watches · 1 wrist</div>
-</header>
+{{ partial "site-nav.html" . }}
 
 <main id="wa-main">
 <section class="wa-hero" data-screen-label="Hero" aria-labelledby="wa-hero-title">
   <div>
+    <div class="status wa-status"><span class="dot" aria-hidden="true"></span>The Wrist Archive · 100 watches · 1 wrist</div>
     <div class="wa-hero-eyebrow">CURRENTLY OBSESSING OVER · <span id="wa-hero-counter">1/{{ len $favs }}</span></div>
     <h1 id="wa-hero-title"><span id="wa-hero-name">{{ $first.name }}</span></h1>
     <div class="wa-hero-specs mono" id="wa-hero-specs">{{ $first.caliber }} · {{ $first.size }} · {{ $first.year }}</div>
@@ -187,10 +184,7 @@
 </section>
 </main>
 
-<footer class="wa-footer">
-  <div>THE WRIST ARCHIVE — a personal catalogue</div>
-  <div>wound daily · worn always</div>
-</footer>
+{{ partial "site-footer.html" . }}
 
 <div id="wa-overlay" class="wa-overlay" hidden>
   <div class="wa-overlay-card" role="dialog" aria-modal="true" aria-labelledby="wa-overlay-model">
