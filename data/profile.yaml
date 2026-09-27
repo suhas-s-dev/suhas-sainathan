@@ -17,7 +17,6 @@ links:
     url: https://github.com/suhas-s-dev
   - label: Threat Intel
     url: https://cti-watch.threat-intel.workers.dev/
-headline: Security architecture for systems that cannot afford ambiguity.
 tagline: CISSP · APPSEC · DDoS
 metrics:
   - value: "100+"

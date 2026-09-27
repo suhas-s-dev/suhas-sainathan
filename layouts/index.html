@@ -35,8 +35,9 @@
       <div class="hero-grid">
         <div>
           <div class="status"><span class="dot" aria-hidden="true"></span>{{ $p.location }} · Security architecture</div>
-          <h1 id="hero-title">{{ $p.headline }}</h1>
-          <p>I’m <strong>{{ $p.name }}</strong>, {{ $p.role }} at {{ $p.company }}. {{ $p.intro }}</p>
+          <h1 id="hero-title">{{ $p.name }}</h1>
+          <p class="hero-role">{{ $p.role }} at {{ $p.company }}.</p>
+          <p>{{ $p.intro }}</p>
           <div class="actions">
             <a class="btn btn-primary" href="#expertise">Explore my work →</a>
             <a class="btn btn-secondary" href="{{ $linkedin.url }}">LinkedIn ↗</a>
@@ -48,7 +49,6 @@
             <img src="{{ "images/suhas-sainathan.jpg" | relURL }}" width="400" height="450" alt="Portrait of {{ $p.name }}">
           </div>
           <div class="sig" aria-hidden="true">{{ $p.tagline }}</div>
-          <div class="identity"><b>{{ $p.name }}</b><span>{{ $p.role }} · {{ $p.company }}</span></div>
         </div>
       </div>
       <div class="metrics">
